@@ -152,14 +152,14 @@ app.post("/update", function(req, res, next) {
   })
 })
 
-app.get("/validate", function(req, res) {
-  var deviceToekn = req.query.deviceToken
+app.post("/validate", function(req, res, next) {
+  var deviceToekn = req.body.deviceToken
 
   if (!deviceToekn) {
     throw boom.badRequest("deviceToken can't be blank")
   }
 
-  var JTW = jwt.sign({}, cert, { algorithm: "ES256", keyid: keyIdentifier, issuer: teamID })
+  var JWT = jwt.sign({}, cert, { algorithm: "ES256", keyid: keyIdentifier, issuer: teamID })
 
   // Send a query request
   request({
