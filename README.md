@@ -33,11 +33,15 @@ This project contains both iOS app and server side app.
 
    ![setup1](Preview/setup1.png)
 
-2. Update `Bundle Identifier` and `Signing` to match created App ID.
+2. Create and download the Key with DeviceCheck enabled. For details about Key, see [Communicate with APNs using authentication tokens](https://help.apple.com/developer-account/#/deva05921840).
+
+   ![setup3](Preview/setup3.png)
+
+3. Update `Bundle Identifier` and `Signing` to match created App ID created in step 1.
 
    ![setup2](Preview/setup2.png)
 
-3. Open [Server/index.js](Server/index.js) and update the configurations to match your developer account. For details about Private Key, see [Communicate with APNs using authentication tokens](https://help.apple.com/developer-account/#/deva05921840).
+4. Open [Server/index.js](Server/index.js) and update the configurations to match your developer account. 
 
 	```swift
 	/* A 10-character Team ID, obtained from your developer account (https://developer.apple.com/account/) */
@@ -47,9 +51,10 @@ This project contains both iOS app and server side app.
 	const keyIdentifier = "YOURKEYID"
 	```
 
-4. Open [AuthKey.p8](Server/AuthKey.p8) file and overwrite the content with the private key downloaded from [Certificates, Identifiers & Profiles](https://developer.apple.com/account/ios/certificate).
 
-5. Install packages and run the server app.
+5. Open [Server/AuthKey.p8](Server/AuthKey.p8) file and overwrite the content with the Key downloaded from Step 2.
+
+6. Install packages and run the server app.
 
 	```sh
 	cd Server
@@ -57,14 +62,14 @@ This project contains both iOS app and server side app.
 	node index.js
 	```
 
-6. Open [BitCounterAPI.swift](DeviceBits/BitCounterAPI.swift) and update `baseURL` to your mac IP address.
+7. Open [BitCounterAPI.swift](DeviceBits/BitCounterAPI.swift) and update `baseURL` to your mac IP address.
 
 	```swith
 	/* Rewrite this URL according to your environment. */
 	static let baseURL = "http://192.168.1.1:3000"
 	```
 
-7. Run the iOS app on your device.
+8. Run the iOS app on your device.
 
 ## Screenshots
 
